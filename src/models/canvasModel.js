@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
 
-const canvasSchema = new mongoose.Schema({
+const canvasSchema = new Schema({
   config: {
     type: Object,
     required: true,
@@ -15,4 +15,4 @@ const canvasSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Canvas", canvasSchema);
+export default model("Canvas", canvasSchema);

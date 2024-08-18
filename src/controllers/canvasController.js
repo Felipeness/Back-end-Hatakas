@@ -1,31 +1,31 @@
-const canvasService = require("../services/canvasService");
+import { saveConfig, saveCanvas, loadCanvas } from "../services/canvasService";
 
-exports.saveConfig = async (req, res) => {
+export async function saveConfig(req, res) {
   try {
     const config = req.body;
-    await canvasService.saveConfig(config);
+    await saveConfig(config);
     res.status(200).send("Configurações salvas com sucesso");
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-};
+}
 
-exports.saveCanvas = async (req, res) => {
+export async function saveCanvas(req, res) {
   try {
     const canvasData = req.body;
-    await canvasService.saveCanvas(canvasData);
+    await saveCanvas(canvasData);
     res.status(200).send("Estado do canvas salvo com sucesso");
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-};
+}
 
-exports.loadCanvas = async (req, res) => {
+export async function loadCanvas(req, res) {
   try {
     const canvasId = req.params.id;
-    const canvas = await canvasService.loadCanvas(canvasId);
+    const canvas = await loadCanvas(canvasId);
     res.status(200).json(canvas);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-};
+}

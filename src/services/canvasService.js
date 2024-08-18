@@ -1,18 +1,18 @@
-const Canvas = require("../models/canvasModel");
+import Canvas from "../models/canvasModel";
 
-exports.saveConfig = async (config) => {
+export async function saveConfig(config) {
   // Lógica para salvar configurações no banco de dados
   // Exemplo: const newConfig = new Canvas(config);
   // await newConfig.save();
-};
+}
 
-exports.saveCanvas = async (canvasData) => {
+export async function saveCanvas(canvasData) {
   // Lógica para salvar o estado do canvas no banco de dados
   const canvas = new Canvas(canvasData);
   await canvas.save();
-};
+}
 
-exports.loadCanvas = async (canvasId) => {
+export async function loadCanvas(canvasId) {
   // Lógica para carregar um estado salvo do canvas
   return await Canvas.findById(canvasId);
-};
+}

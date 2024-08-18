@@ -1,9 +1,13 @@
-const express = require("express");
-const router = express.Router();
-const canvasController = require("../controllers/canvasController");
+import { Router } from "express";
+const router = Router();
+import {
+  saveConfig,
+  saveCanvas,
+  loadCanvas,
+} from "../controllers/canvasController";
 
-router.post("/config", canvasController.saveConfig);
-router.post("/save", canvasController.saveCanvas);
-router.get("/load/:id", canvasController.loadCanvas);
+router.post("/config", saveConfig);
+router.post("/save", saveCanvas);
+router.get("/load/:id", loadCanvas);
 
-module.exports = router;
+export default router;

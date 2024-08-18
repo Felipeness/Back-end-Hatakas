@@ -1,15 +1,15 @@
-const express = require("express");
+import express, { json } from "express";
 const app = express();
-const canvasRoutes = require("./routes/canvasRoutes");
+import canvasRoutes from "./routes/canvasRoutes";
 
 // Middleware para parsear JSON
-app.use(express.json());
+app.use(json());
 
 // Rotas
 app.use("/api/canvas", canvasRoutes);
 
 // Middleware de tratamento de erros
-const errorHandler = require("./middlewares/errorHandler");
+import errorHandler from "./middlewares/errorHandler";
 app.use(errorHandler);
 
-module.exports = app;
+export default app;

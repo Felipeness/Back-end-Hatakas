@@ -1,21 +1,21 @@
 // levar como exemplo do exemplo
-const winston = require("winston");
+import { createLogger, format as _format, transports as _transports } from "winston";
 
-const logger = winston.createLogger({
+const logger = createLogger({
   level: "info",
-  format: winston.format.json(),
+  format: _format.json(),
   transports: [
-    new winston.transports.File({ filename: "error.log", level: "error" }),
-    new winston.transports.File({ filename: "combined.log" }),
+    new _transports.File({ filename: "error.log", level: "error" }),
+    new _transports.File({ filename: "combined.log" }),
   ],
 });
 
 if (process.env.NODE_ENV !== "production") {
   logger.add(
-    new winston.transports.Console({
-      format: winston.format.simple(),
+    new _transports.Console({
+      format: _format.simple(),
     })
   );
 }
 
-module.exports = logger;
+export default logger;
